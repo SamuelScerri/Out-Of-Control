@@ -1,2 +1,5 @@
-# Out-Of-Control
-Source Code of our Submission for Wowie Jam 4.0
+# Out Of Control 🤖
+## Team
+  - 🎨 Art: Medicalopinion
+  - 🎮 Idea & Game Tester: ArgaJacint
+  - 👨‍💻 Programming: Me!
