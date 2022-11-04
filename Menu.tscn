@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://cover2.png" type="Texture" id=1]
+[ext_resource path="res://Dev Resources/Font.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Resources/old-man-working-computer-24058435.jpg" type="Texture" id=3]
+[ext_resource path="res://Resources/PngItem_2073499.png" type="Texture" id=4]
+[ext_resource path="res://Resources/cover2.jpg" type="Texture" id=5]
+[ext_resource path="res://Resources/323-3239876_nintendo-seal-of-quality-png-nintendo-seal-of.png" type="Texture" id=6]
+[ext_resource path="res://Resources/55ca9y.png" type="Texture" id=7]
+[ext_resource path="res://Scripts/StartGame.gd" type="Script" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[node name="Cover2" type="Sprite"]
+position = Vector2( 320, 256 )
+scale = Vector2( 1.03, 1.03 )
+texture = ExtResource( 1 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = -108.738
+margin_top = -31.068
+margin_right = 111.262
+margin_bottom = 1.93204
+theme = SubResource( 2 )
+text = "START GAME"
+flat = true
+clip_text = true
+script = ExtResource( 8 )
+
+[node name="Old-man-working-computer-24058435" type="Sprite" parent="."]
+position = Vector2( 233.01, 108.738 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 3 )
+
+[node name="Button2" type="Button" parent="."]
+margin_left = -178.641
+margin_top = 62.1359
+margin_right = 178.359
+margin_bottom = 95.1359
+theme = SubResource( 2 )
+text = "BONUS LEVELS"
+flat = true
+clip_text = true
+
+[node name="PngItem2073499" type="Sprite" parent="."]
+position = Vector2( 132.039, 100.971 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 4 )
+
+[node name="Cover2" type="Sprite" parent="."]
+position = Vector2( -170.874, 163.107 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 5 )
+
+[node name="323-3239876Nintendo-seal-of-quality-png-nintendo-seal-of" type="Sprite" parent="Cover2"]
+position = Vector2( 4020.82, -2782.27 )
+scale = Vector2( 1.40314, 1.59781 )
+texture = ExtResource( 6 )
+
+[node name="55Ca9y" type="Sprite" parent="."]
+position = Vector2( -217.476, -116.505 )
+scale = Vector2( 0.336484, 0.336484 )
+texture = ExtResource( 7 )
+
+[connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]

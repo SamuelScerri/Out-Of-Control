@@ -1,0 +1,62 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Scripts/Rocket.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Rocket/Rocket Launch.wav" type="AudioStream" id=2]
+[ext_resource path="res://Resources/Smoke/Bigsmonk03.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Smoke/Bigsmonk04.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Rocket/le_bombe04.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Rocket/le_bombe02.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Rocket/le_bombe03.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Smoke/Bigsmonk02.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Smoke/Bigsmonk01.png" type="Texture" id=9]
+[ext_resource path="res://Resources/Rocket/le_bombe01.png" type="Texture" id=10]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 6, 2 )
+
+[sub_resource type="AnimatedTexture" id=7]
+frames = 4
+frame_0/texture = ExtResource( 9 )
+frame_1/texture = ExtResource( 8 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 3 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 4 )
+frame_3/delay_sec = 0.0
+
+[node name="Rocket" type="KinematicBody2D"]
+z_index = -5
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+rotationSpeed = 3
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 5 )
+frame = 3
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 6 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -1
+amount = 16
+local_coords = false
+texture = SubResource( 7 )
+gravity = Vector2( 0, 50 )
+angle_random = 1.0

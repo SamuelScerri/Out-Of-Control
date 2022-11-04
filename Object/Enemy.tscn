@@ -1,0 +1,67 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Resources/Eye Enemy/flything01.png" type="Texture" id=1]
+[ext_resource path="res://Resources/Eye Enemy/flything02.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Eye Enemy/flything03.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Smoke/Bigsmonk03.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Smoke/Bigsmonk04.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Smoke/Bigsmonk02.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Smoke/Bigsmonk01.png" type="Texture" id=7]
+[ext_resource path="res://Scripts/Enemy.gd" type="Script" id=8]
+[ext_resource path="res://Resources/Eye Enemy/eyedeth04.png" type="Texture" id=9]
+[ext_resource path="res://Resources/Eye Enemy/eyedeth05.png" type="Texture" id=10]
+[ext_resource path="res://Resources/Eye Enemy/eyedeth02.png" type="Texture" id=11]
+[ext_resource path="res://Resources/Eye Enemy/eyedeth01.png" type="Texture" id=12]
+[ext_resource path="res://Resources/Eye Enemy/eyedeth03.png" type="Texture" id=13]
+[ext_resource path="res://Resources/Eye Enemy/eyedeth07.png" type="Texture" id=14]
+[ext_resource path="res://Resources/Eye Enemy/eyedeth06.png" type="Texture" id=15]
+
+[sub_resource type="AnimatedTexture" id=7]
+frames = 4
+frame_0/texture = ExtResource( 7 )
+frame_1/texture = ExtResource( 6 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 4 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 5 )
+frame_3/delay_sec = 0.0
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 4.0
+height = 6.0
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "Alive",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 15 ), ExtResource( 14 ) ],
+"loop": false,
+"name": "Dead",
+"speed": 10.0
+} ]
+
+[node name="Enemy" type="KinematicBody2D" groups=["Enemy"]]
+collision_layer = 6
+collision_mask = 6
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+DISTANCE_SHOOT = 100.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 3
+texture = SubResource( 7 )
+gravity = Vector2( 0, 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 6 )
+animation = "Alive"
+frame = 2
+playing = true
